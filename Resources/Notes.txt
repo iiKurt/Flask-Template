@@ -1,0 +1,2 @@
+The reason why we have a folder under the templates folder that is the same name of the parent of the templates folder (e.g. admin/templates/admin) is because Flask is a dummy:
+	https://stackoverflow.com/questions/7974771/flask-blueprint-template-folder

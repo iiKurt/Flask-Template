@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Demo App{% endblock %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block metas %}
+{{ super() }}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+{% endblock %}
+
+{% block header %}
+<div class="p-5 bg-primary text-white bg-gradient jumbotron">
+	<div class="container text-shadow-bold">
+		<h2>Hi! I'm {{ user.username }}!</h2>
+		<p>Placeholder text</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>Some content...</h1>
+{% endblock %}

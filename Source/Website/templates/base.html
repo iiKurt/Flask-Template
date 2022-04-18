@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>{% block title %}Untitled{% endblock %} · Website</title>
+
+		{% block styles %}
+		<!-- Bootstrap -->
+		<link href="{{url_for('static', filename='css/theme.min.css')}}" rel="stylesheet">
+		<!-- Custom -->
+		{% endblock %}
+
+		{% block metas %}
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% endblock %}
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-bold">
+			<div class="container">
+				<a class="navbar-brand" href="{{ url_for('home.root') }}">Website</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li>
+							<a class="nav-link {% if request.path == url_for('home.root') %}active{% endif %}" aria-current="page" href="{{ url_for('home.root') }}">Home</a>
+						</li>
+						<li>
+							<a class="nav-link" href="#">Link</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Dropdown
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li>
+						<li>
+							<a class="nav-link disabled">Disabled</a>
+						</li>
+					</ul>
+					<form class="d-flex me-2">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+					<ul class="navbar-nav">
+						{% if current_user.is_authenticated %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{{ current_user.username }}
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="{{ url_for('userspace.root', username=current_user.username) }}">Profile</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Log out</a></li>
+							</ul>
+						</li>
+						{% else %}
+						<li>
+							<a class="nav-link {% if request.path == url_for('auth.login') %}active{% endif %}" href="{{ url_for('auth.login') }}">Login</a>
+						</li>
+						<li>
+							<a class="nav-link {% if request.path == url_for('auth.signup') %}active{% endif %}" href="{{ url_for('auth.signup') }}">Sign Up</a>
+						</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		{% block header %}
+		{% endblock %}
+
+		<div class="container pt-3">
+			<main>
+				{% block content %}
+				<p>There's nothing here...</p>
+				{% endblock %}
+			</main>
+		</div>
+
+		{% block footer %}
+		<footer class="text-muted py-5">
+			<div class="container">
+				<p class="float-right mb-1">
+					<a href="#">Back to top</a>
+				</p>
+				<p class="mb-1">Pretty nifty, eh&#8253; Expect more updates in the future!</p>
+				<p class="mb-0">Suggestions? <a href="#">Email me</a>, or <a href="#">contact us</a>.</p>
+			</div>
+		</footer>
+		{% endblock %}
+
+		{% block scripts %}
+		<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+		{% endblock %}
+	</body>
+</html>

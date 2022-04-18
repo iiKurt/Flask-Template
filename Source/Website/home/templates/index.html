@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Demo App{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+{% endblock %}
+
+{% block header %}
+<div class="p-5 bg-primary text-white bg-gradient jumbotron">
+	<div class="container text-shadow-bold">
+		<h2>Bootstrap Theme Test</h2>
+		<p>Placeholder text</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="starter-template">
+	<h1>Bootstrap starter template</h1>
+	<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+</div>
+{% endblock %}

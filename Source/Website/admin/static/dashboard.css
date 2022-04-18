@@ -1,0 +1,19 @@
+.password-column {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 15ch;
+}
+
+.invisible {
+    opacity: 0;
+    transition: visibility 0.1s linear,opacity 0.1s linear;
+}
+
+tr:hover .invisible {
+    visibility: visible !important;
+    opacity: 0.5;
+}
+
+.btn-close:hover {
+	opacity: 0.75 !important;
+}
