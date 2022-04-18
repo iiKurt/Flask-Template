@@ -22,108 +22,135 @@
 {% endblock %}
 
 {% block content %}
-<h1>Users</h1>
-<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Username</th>
-				<th>Password</th>
-				<th>Date Joined</th>
-				<th>Role</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for user in users %}
-			<tr>
-				<td>{{ user.id }}</td>
-				<td><a href="/user/{{ user.username }}">{{ user.username }}</a></td>
-				<td class="password-column">{{ user.password }}</td>
-				<td>{{ user.join }}</td>
-				<td>{{ user.role }}</td>
-				<td><button title="Delete this user" data-user-username="{{ user.username }}" type="button" class="btn-delete-user invisible btn-close float-end" aria-label="Close"></button></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</div>
 
-<h1>Profiles</h1>
-<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Description</th>
-				<th>User ID</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for profile in profiles %}
-			<tr>
-				<td>{{ profile.id }}</td>
-				<td>{{ profile.description }}</td>
-				<td>{{ profile.user_id }}</td>
-				<td><button type="button" class="invisible btn-close float-end" aria-label="Close"></button></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</div>
+<div class="container">
+  <div class="row">
+	<div class="col-sm-3 col-md-2">
+	  <ul class="nav sticky-top flex-column">
+		<li class="nav-item">
+			<a href="#users" class="nav-link">Users</a>
+		</li>
+		<li class="nav-item">
+			<a href="#profiles" class="nav-link">Profiles</a>
+		</li>
+		<li class="nav-item">
+			<a href="#posts" class="nav-link">Posts</a>
+		</li>
+		<li class="nav-item">
+			<a href="#comments" class="nav-link">Comments</a>
+		</li>
+	  </ul>
+	</div>
+	<div class="col-sm-9 col-md-10">
+		<section id="users"></section>
+		<h1>Users</h1>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Username</th>
+						<th>Password</th>
+						<th>Date Joined</th>
+						<th>Role</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td><a href="/user/{{ user.username }}">{{ user.username }}</a></td>
+						<td class="password-column">{{ user.password }}</td>
+						<td>{{ user.join }}</td>
+						<td>{{ user.role }}</td>
+						<td><button title="Delete this user" data-user-username="{{ user.username }}" type="button" class="btn-delete-user invisible btn-close float-end" aria-label="Close"></button></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
 
-<h1>Posts</h1>
-<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Title</th>
-				<th>Contents</th>
-				<th>Date Posted</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for post in posts %}
-			<tr>
-				<td>{{ post.id }}</td>
-				<td>{{ post.title }}</td>
-				<td>{{ post.contents }}</td>
-				<td>{{ post.posted }}</td>
-				<td><button type="button" class="invisible btn-close float-end" aria-label="Close"></button></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-</div>
+		<section id="profiles"></section>
+		<h1>Profiles</h1>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Description</th>
+						<th>User ID</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for profile in profiles %}
+					<tr>
+						<td>{{ profile.id }}</td>
+						<td>{{ profile.description }}</td>
+						<td>{{ profile.user_id }}</td>
+						<td><button type="button" class="invisible btn-close float-end" aria-label="Close"></button></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
 
-<h1>Comments</h1>
-<div class="table-responsive">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Post ID</th>
-				<th>Parent Comment ID</th>
-				<th>Author ID</th>
-				<th>Contents</th>
-				<th>Date Posted</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for comment in comments %}
-			<tr>
-				<td>{{ comment.id }}</td>
-				<td>{{ comment.post_id }}</td>
-				<td>{{ comment.parent_id }}</td>
-				<td>{{ comment.author_id }}</td>
-				<td>{{ comment.contents }}</td>
-				<td>{{ comment.posted }}</td>
-				<td><button type="button" class="invisible btn-close float-end" aria-label="Close"></button></td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+		<section id="posts"></section>
+		<h1>Posts</h1>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Contents</th>
+						<th>Date Posted</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for post in posts %}
+					<tr>
+						<td>{{ post.id }}</td>
+						<td>{{ post.title }}</td>
+						<td>{{ post.contents }}</td>
+						<td>{{ post.posted }}</td>
+						<td><button type="button" class="invisible btn-close float-end" aria-label="Close"></button></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<section id="comments"></section>
+		<h1>Comments</h1>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Post ID</th>
+						<th>Parent Comment ID</th>
+						<th>Author ID</th>
+						<th>Contents</th>
+						<th>Date Posted</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for comment in comments %}
+					<tr>
+						<td>{{ comment.id }}</td>
+						<td>{{ comment.post_id }}</td>
+						<td>{{ comment.parent_id }}</td>
+						<td>{{ comment.author_id }}</td>
+						<td>{{ comment.contents }}</td>
+						<td>{{ comment.posted }}</td>
+						<td><button type="button" class="invisible btn-close float-end" aria-label="Close"></button></td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+  </div>
 </div>
 
 {% endblock %}

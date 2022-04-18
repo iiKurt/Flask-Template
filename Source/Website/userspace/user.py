@@ -5,7 +5,7 @@ from extensions import db
 from models import User
 
 @userspace.route('/user/<username>')
-def root(username):
+def user(username):
 	user = User.query.filter_by(username=username).first()
 	if user:
 		return render_template("userspace/user.html", user=user)
@@ -13,7 +13,7 @@ def root(username):
 		return abort(404)
 
 @userspace.route('/user/<username>', methods=['DELETE'])
-def deleteRoot(username):
+def deleteUser(username):
 	if current_user.is_authenticated and current_user.role == "admin":
 		user = User.query.filter_by(username=username).delete()
 		db.session.commit()

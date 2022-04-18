@@ -17,3 +17,11 @@ tr:hover .invisible {
 .btn-close:hover {
 	opacity: 0.75 !important;
 }
+
+section {
+  scroll-margin-top: 60px;
+}
+
+.nav.sticky-top {
+	top: 75px;
+}

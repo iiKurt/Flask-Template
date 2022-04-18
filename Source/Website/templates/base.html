@@ -54,7 +54,7 @@
 								{{ current_user.username }}
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="{{ url_for('userspace.root', username=current_user.username) }}">Profile</a></li>
+								<li><a class="dropdown-item" href="{{ url_for('userspace.user', username=current_user.username) }}">Profile</a></li>
 								<li><hr class="dropdown-divider"></li>
 								<li><a class="dropdown-item" href="{{ url_for('auth.logout') }}">Log out</a></li>
 							</ul>
