@@ -1,0 +1,1 @@
+uwsgi -L --http-socket 0.0.0.0:8080 --plugin python3 --pythonpath /var/www/html/public --pythonpath /var/www/html/public/public --callable app -H /var/www/html/public/venv -w public

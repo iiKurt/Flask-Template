@@ -19,20 +19,21 @@ if "--debug" in sys.argv:
 if "--reset" in sys.argv:
 	drop = True
 
+running = str(pathlib.Path(__file__).parent.absolute())
+sys.path.append(running + "/../../Source/") # lets us import stuff when importing from subdirectory
 if debug:
-	running = str(pathlib.Path(__file__).parent.absolute())
-	sys.path.insert(0, running + "/../../Source/")
-	sys.path.append(running + "/../../Source/Website/") # lets us import stuff when importing from subdirectory
+	from Source import app, register_extensions, setup
+	from Source.extensions import db
+	import Source.models
 else:
-	sys.path.insert(0, "/var/www/Website/")
-	sys.path.append("/var/www/Website/Website/")
+	from Source import app, register_extensions, setup
+	from Source.extensions import db
+	import Source.models
 
-from Website import app, register_extensions
-
-register_extensions(app)
+setup()
 app.debug = debug
 
-from Website import *
+#from Website import *
 
 with app.app_context():
 	db.session.commit() # commit any unfinished changes

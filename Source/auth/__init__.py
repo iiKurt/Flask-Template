@@ -1,16 +1,12 @@
 from flask import redirect, url_for, Blueprint
-from flask_login import LoginManager, login_required, logout_user
+from flask_login import login_required, logout_user
 from models import User, Profile
+from extensions import login_manager
 
 auth = Blueprint("auth", __name__,
 	template_folder = "templates",
 	static_folder = "static",
 	static_url_path = "auth/static")
-
-from Website import app
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'auth.login'
 
 @login_manager.user_loader
 def load_user(user_id):

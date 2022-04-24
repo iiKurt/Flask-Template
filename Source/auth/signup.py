@@ -1,5 +1,7 @@
 from auth import auth
 
+from configuration import config_object
+
 from flask_login import login_user, current_user
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
@@ -18,6 +20,9 @@ class RegisterForm(FlaskForm):
 def signup():
 	if current_user.is_authenticated:
 		return redirect(url_for('userspace.dashboard'))
+
+	if not config_object.get_config()['accountCreation']:
+		return render_template('disabled.html')
 
 	form = RegisterForm()
 

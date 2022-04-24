@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% import "flask/wtf.html" as wtf %}
+
+{% block title %}Login{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('auth.static', filename='credentials.css')}}">
+{% endblock %}
+
+{% block content %}
+<h1>New account creation is disabled at the moment. Check back later!</h1>
+{% endblock %}

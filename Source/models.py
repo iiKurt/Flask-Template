@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 class User(UserMixin, db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(15), unique=True)
-	password = db.Column(db.String(80))
+	password = db.Column(db.String(120))
 	join = db.Column(db.DateTime, server_default=func.now(), nullable=False)
 	role = db.Column(db.String(15))
 

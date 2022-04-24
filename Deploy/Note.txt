@@ -1,0 +1,8 @@
+NOTE: All these files go under /var/www/html/public/
+Perhaps best to run:
+	export PYTHONPATH=$PYTHONPATH:/var/www/html/public/Source/
+when doing any migrations
+
+Test DB using venv python:
+>>> import sys; sys.path.append("/var/www/html/public/Source/"); from public import app, setup; from models import User; app.app_context().push()
+>>> user = User.query.filter_by(username="kurt").first()
