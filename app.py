@@ -1,3 +1,4 @@
+#!venv/bin/python3
 import sys, pathlib
 running = str(pathlib.Path(__file__).parent.absolute())
 sys.path.append(running + "/Source/") # lets us import stuff when importing from subdirectory

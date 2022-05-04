@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html {% block html_attribs %}{% endblock html_attribs %}>
+	<head>
+		<title>{% block title %}Untitled{% endblock %} · Website</title>
+
+		{% block styles %}
+		<!-- Bootstrap -->
+		<link href="{{url_for('static', filename='css/theme.min.css')}}" rel="stylesheet">
+		<!-- Custom -->
+		{% endblock %}
+
+		{% block metas %}
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% endblock %}
+	</head>
+	<body {% block body_attribs %}{% endblock body_attribs %}>
+		{% block body %}
+		{% endblock %}
+
+		{% block scripts %}
+		<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+		{% endblock %}
+	</body>
+</html>
