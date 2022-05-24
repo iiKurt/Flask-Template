@@ -7,6 +7,27 @@ The site itself allows users to register, login, and takes them to their own use
 
 An admin dashboard is also available that allows the viewing of all table contents and the management of users.
 
+## Setup
+To setup the project for the first time, you'll need to create a virtual environment in the root folder:
+```
+python3 -m venv venv
+```
+
+Activate the virtual environment (so we can use `pip` in the context of our virtual environment):
+```
+source venv/bin/activate
+```
+
+Then install the required packages:
+```
+pip3 install -r "Resources/Requirements.txt"
+```
+
+Deactivate the virtual environment, as we're done:
+```
+deactivate
+```
+
 ## Note
 The database that I've set up has a few extra tables for a different project I'm working on. Ignore it if you like :)
 
